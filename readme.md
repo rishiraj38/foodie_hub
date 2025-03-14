@@ -18,3 +18,35 @@ lecture 1:
 8. whatever we make the react will work only in that section in which we render .
 
 lecture 2 :-
+ 1. npm doesnot have a full form like node pakage manager
+
+2. pakage.json is configuration for npm
+
+3. two types of pakages we can install dev dependency(req when we are developing app) and normal depdency(used in prooduction level)
+
+4. caret and tilde in js - caret(^ will upgrade the minor verion(not written only here)) ans tilde(~ will upgrade the major version only)
+
+5. we donot need to push node modules to git hub because we can regenrate it using npm install.
+
+6. just like npm npx means it will excute that bundler or will ignite that code.
+
+7. using react using cdn is not efficient to do we should not use it.
+
+8. Parcel-
+- dev build 
+- local server
+- HMR - Hot Module Replacment
+- File watching algo - written in c++
+- caching - Faster Builds
+- Image Optimization
+- Minification
+- Bundling
+- Compress
+- consistent hashing 
+- code Splitting 
+- diffrential bundling  - support older version of the web browser.
+- error handling
+- Tree shaking algo - remove unused code .
+- diffrent build for dev and prod bindles.
+
+9. Browser list package.
