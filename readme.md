@@ -50,3 +50,19 @@ lecture 2 :-
 - diffrent build for dev and prod bindles.
 
 9. Browser list package.
+
+lecture -3
+1. npm run start is equal to npm run 
+2. JSX is HTMl like syntax or XML like syntax.
+3. JSX(transpiled before it reaches the JS) => parcel - babel
+4. babel convert the jsx to react.
+5. JSX => React.createElement => JS Object => HtmlElement(render)
+6. If we have to give attribute we need to write it in camel case.
+8. React Component - Class Based Component-OLD
+                    -Fuctional Component - NEW
+
+9. if we need to make the functional component we always need to write first letter capital.
+10. Using another functional component under another functional component called as Component Composition.
+11. we can write javascript inside jsx using {} just these
+12. React JSX automatically work as a security if we fetch some data and it renders some mallicious data it will automatically escape that mallacious data .
+13. 
