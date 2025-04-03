@@ -66,3 +66,11 @@ lecture -3
 11. we can write javascript inside jsx using {} just these
 12. React JSX automatically work as a security if we fetch some data and it renders some mallicious data it will automatically escape that mallacious data .
 13. 
+
+lecture - 6
+
+1. the use effect takes two arguments first is the callback and  the second is a dependency array.
+2. use effect will bw called agter the body is rendred.
+3. When we made the button in the header the whole code is getting called again but only that button render that is why React is  fast in dom manupulaiton and reonsiliation.
+4. Whenever ,state variable update react trigeers a reconsiliation cycle takes place(re-render the component).
+ 
