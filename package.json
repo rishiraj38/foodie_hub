@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This is namaste react by akshay saini",
   "scripts": {
-    "start":"parcel index.html",
+    "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
   },
@@ -26,9 +26,10 @@
   },
   "dependencies": {
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^6.30.0"
   },
-  "browserslist":[
+  "browserslist": [
     "last 2 versions"
   ]
 }

@@ -73,4 +73,14 @@ lecture - 6
 2. use effect will bw called agter the body is rendred.
 3. When we made the button in the header the whole code is getting called again but only that button render that is why React is  fast in dom manupulaiton and reonsiliation.
 4. Whenever ,state variable update react trigeers a reconsiliation cycle takes place(re-render the component).
- 
+  
+lecture - 7
+1. If no depedency array is passed then useEffectis called on every render if depedency array is empty [] useEffect is called on initial render(just once)
+if depedency array contains something it will update on every time we change something in that component.
+2. We use react route as the library to make multiple pages 
+3. in this library we have learned some components mainly 1.Outlet 2. children router approuter(create browser router)
+4. Link to connect different pages for the website .Link vs Anchor  - Link smoothly changes the page but anchor tag just refreshes the page to change between different pages.
+5. # Two Types of routing .
+- Client Side Routing
+- Server side Routing
+6. client side routing . (Single page application).(one page thus the components are getting exchanged.).
