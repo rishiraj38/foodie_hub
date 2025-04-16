@@ -3,6 +3,7 @@ import ResturantCard from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import mockResListData from "./mocks/mockResListData.json";
+import useOnlineStatus from "../utlis/useOnlineStatus";
 
 const Body = () => {
   const [listOfresturant, setListOfresturant] = useState([]);
@@ -65,7 +66,15 @@ const Body = () => {
     );
     setFilteredListOfresturant(filteredList);
   };
-
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) {
+    return (
+      <div className="offline">
+        <h1>Offline</h1>
+        <h2>Please check your internet connection</h2>
+      </div>
+    );
+  }
   return (
     <div className="body">
       <div className="filter">

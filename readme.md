@@ -84,3 +84,7 @@ if depedency array contains something it will update on every time we change som
 - Client Side Routing
 - Server side Routing
 6. client side routing . (Single page application).(one page thus the components are getting exchanged.).
+ 
+ Lecture - 9:
+ 1. optimizing by making custom hooks(what are Custom hooks?)- A simple react function.for better practise we write use in frot of the file name e.g - useResturantMenu etc.
+ 2.  

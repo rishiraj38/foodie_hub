@@ -2,26 +2,12 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utlis/constants";
+import useResturantMenu from "../utlis/useResturantMenu";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { resid } = useParams(); 
-  console.log("resid", resid);
 
-  useEffect(() => {
-    fetchData();
-  }, [resid]); 
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch(MENU_API + resid); 
-      const json = await response.json();
-      setResInfo(json?.data); 
-      console.log("API Response:", json?.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  const resInfo = useResturantMenu(resid); //Custom HOOK
 
   if (!resInfo) return <Shimmer />; 
 
@@ -35,7 +21,7 @@ const RestaurantMenu = () => {
     ?.filter(Boolean)
     ?.flat();
 
-
+  // Extracting name, cuisines, and cost information
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[2]?.card?.card?.info;
 
