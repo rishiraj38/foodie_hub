@@ -1,4 +1,7 @@
-.header{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* .header{
     display: flex;
     justify-content: space-between;
     border: 1px solid #000;
@@ -65,4 +68,4 @@
 }
 .filter{
     display: flex;
-}
+} */

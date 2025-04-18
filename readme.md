@@ -87,4 +87,7 @@ if depedency array contains something it will update on every time we change som
  
  Lecture - 9:
  1. optimizing by making custom hooks(what are Custom hooks?)- A simple react function.for better practise we write use in frot of the file name e.g - useResturantMenu etc.
- 2.  
+ 2.  lazy Load renders a component when a user need and once it is rendered it is in the memory (lazy with suspense).
+
+ lecture -11
+ 1. higher component is a function that takes some component and enchances that component and returns back.
