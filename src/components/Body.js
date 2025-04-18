@@ -33,6 +33,7 @@ const Body = () => {
 
       const json = await response.json();
       const restaurantList = extractRestaurantList(json?.data);
+
       if (restaurantList.length === 0)
         throw new Error("No restaurants in live API");
 
@@ -40,12 +41,19 @@ const Body = () => {
       setFilteredListOfresturant(restaurantList);
     } catch (error) {
       console.log("Error fetching live data:", error);
-      console.log("Falling back to mock data");
+
       const mockList = extractRestaurantList(mockResListData?.data);
-      setListOfresturant(mockList);
-      setFilteredListOfresturant(mockList);
+      console.log("Falling back to mock data", mockResListData); // Log mock data to check structure
+
+      if (mockList.length === 0) {
+        console.log("❌ Mock data is also empty!");
+      } else {
+        setListOfresturant(mockList);
+        setFilteredListOfresturant(mockList);
+      }
     }
   };
+
 
   const handleSearch = () => {
     const filteredList = listOfresturant.filter((res) =>
