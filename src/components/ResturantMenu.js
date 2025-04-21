@@ -25,7 +25,6 @@ const RestaurantMenu = () => {
 
   const { name = "Restaurant", cuisines = [], costForTwoMessage = "" } = info;
 
-  // 🧠 Extract REGULAR cards for menu sections
   const regularCards = resInfo?.cards?.find(
     (card) => card?.groupedCard?.cardGroupMap?.REGULAR
   )?.groupedCard?.cardGroupMap?.REGULAR?.cards;
