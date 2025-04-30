@@ -10,20 +10,21 @@ const RestaurantMenu = () => {
 
   if (!resInfo) return <Shimmer />;
 
-  // 🧠 Safely extract restaurant info (works for both live + mock)
   const restaurantInfoCard = resInfo?.cards?.find(
     (card) =>
       card?.card?.card?.info?.name ||
       card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
   );
+  
+  console.log(restaurantInfoCard)
 
   const info =
     restaurantInfoCard?.card?.card?.info ||
     restaurantInfoCard?.card?.info ||
     {};
 
-  const { name = "Restaurant", cuisines = [], costForTwoMessage = "" } = info;
+  const { name, cuisines, costForTwoMessage } = info;
 
   const regularCards = resInfo?.cards?.find(
     (card) => card?.groupedCard?.cardGroupMap?.REGULAR

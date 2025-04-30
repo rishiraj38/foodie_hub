@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ResturantCard from "./ResturantCard";
+import ResturantCard, { withPromotedLabel } from "./ResturantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import mockResListData from "./mocks/mockResListData.json";
@@ -10,6 +10,7 @@ const Body = () => {
   const [listOfresturant, setListOfresturant] = useState([]);
   const [filteredListOfresturant, setFilteredListOfresturant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const RestaurantCardPromoted = withPromotedLabel(ResturantCard)
 
   useEffect(() => {
     fetchData();
@@ -120,7 +121,11 @@ const Body = () => {
                 to={`/resturant/${restaurant.info.id}`}
                 key={restaurant.info.id}
               >
-                <ResturantCard resData={restaurant.info} />
+                {restaurant?.data?.promoted ? (
+                  <RestaurantCardPromoted resData={restaurant.info} />
+                ) : (
+                  <ResturantCard resData={restaurant.info} />
+                )}
               </Link>
             ) : null
           )

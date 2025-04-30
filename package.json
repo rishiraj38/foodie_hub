@@ -27,6 +27,7 @@
     "tailwindcss": "^3.4.17"
   },
   "dependencies": {
+    "motion": "^12.8.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
