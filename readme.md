@@ -92,3 +92,15 @@ if depedency array contains something it will update on every time we change som
  lecture -11
  1. higher order component is a function that takes some component and enchances that component and returns back.
  2. Controlled and Uncontrolled component  
+
+ lecture -12
+ 1. When we click on add button it dispatches an action which call the reducer function which update the slice of our redux store.(write data)
+ 2. we will use a #selector# and seletor will modify the data there
+
+ # Redux Toolkit
+ - install @reduxjs/toolkit and react-redux
+ - build our store
+ - connect store to our app
+ - slice (cartSlice)
+ - dispatch action
+ - selector

@@ -2,11 +2,17 @@ import { LOGO_URL } from "../utlis/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utlis/useOnlineStatus";
+import { FaCartShopping } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setbtnName] = useState("Login");
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
   const onlineStatus = useOnlineStatus();
+
+  //Subscribing to the store using Seletor
+  const cartItems = useSelector((store)=>store.cart.items);
+  // console.log(cartItems)
 
   return (
     <header className="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg px-4 py-3">
@@ -38,7 +44,9 @@ const Header = () => {
           <Link to="/grocery" className="hover:text-blue-700">
             Grocery
           </Link>
-          <span className="hover:text-blue-700">Cart</span>
+          <Link to="/cart" className="hover:text-blue-700 font-bold flex">
+            <FaCartShopping className="content-center size-7"/>({cartItems.length})
+          </Link>
           <button
             className="ml-4 bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition"
             onClick={() => setbtnName(btnName === "Login" ? "Logout" : "Login")}
@@ -63,7 +71,7 @@ const Header = () => {
           <Link to="/grocery" className="hover:text-blue-700">
             Grocery
           </Link>
-          <span className="hover:text-blue-700">Cart</span>
+          <Link to="/cart"className="hover:text-blue-700">Cart</Link>
           <button
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
             onClick={() => setbtnName(btnName === "Login" ? "Logout" : "Login")}
