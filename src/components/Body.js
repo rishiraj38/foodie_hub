@@ -10,7 +10,7 @@ const Body = () => {
   const [listOfresturant, setListOfresturant] = useState([]);
   const [filteredListOfresturant, setFilteredListOfresturant] = useState([]);
   const [searchText, setSearchText] = useState("");
-  const RestaurantCardPromoted = withPromotedLabel(ResturantCard)
+  const RestaurantCardPromoted = withPromotedLabel(ResturantCard);
 
   useEffect(() => {
     fetchData();
@@ -44,8 +44,6 @@ const Body = () => {
       console.log("Error fetching live data:", error);
 
       const mockList = extractRestaurantList(mockResListData?.data);
-      console.log("Falling back to mock data", mockResListData); // Log mock data to check structure
-
       if (mockList.length === 0) {
         console.log("❌ Mock data is also empty!");
       } else {
@@ -54,7 +52,6 @@ const Body = () => {
       }
     }
   };
-
 
   const handleSearch = () => {
     const filteredList = listOfresturant.filter((res) =>
@@ -84,12 +81,12 @@ const Body = () => {
   }
 
   return (
-    <div className="body px-6 py-4 bg-[#f7f7f7]  min-h-screen">
+    <div className="body px-4 py-6 bg-[#f7f7f7] min-h-screen">
       <div className="filter flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        <div className="search flex gap-2">
+        <div className="search flex gap-2 w-full md:w-auto">
           <input
             type="text"
-            className="border border-gray-400 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300 w-64"
+            className="border border-gray-400 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300 w-full md:w-64"
             placeholder="Search for restaurants"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
@@ -111,7 +108,7 @@ const Body = () => {
       </div>
 
       {/* Restaurant Cards */}
-      <div className="res-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="res-container grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {listOfresturant.length === 0 ? (
           <Shimmer />
         ) : (
