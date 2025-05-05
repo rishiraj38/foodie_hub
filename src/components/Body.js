@@ -81,7 +81,7 @@ const Body = () => {
   }
 
   return (
-    <div className="body px-4 py-6 bg-[#f7f7f7] min-h-screen">
+    <div className="body px-4 py-6 bg-gradient-to-br from-blue-50 to-purple-100 p-6 min-h-screen">
       <div className="filter flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
         <div className="search flex gap-2 w-full md:w-auto">
           <input
@@ -108,7 +108,7 @@ const Body = () => {
       </div>
 
       {/* Restaurant Cards */}
-      <div className="res-container grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="res-container flex flex-wrap justify-center ">
         {listOfresturant.length === 0 ? (
           <Shimmer />
         ) : (
