@@ -10,10 +10,8 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { Provider } from "react-redux";
 import appStore from "./utlis/appStore";
-import { Analytics } from "@vercel/analytics/next";
-
-// import Grocery from "./components/Grocery";
-
+import { inject } from "@vercel/analytics";
+inject();
 const Grocery = lazy(() => import("./components/Grocery"));
 const AppLayout = () => {
   return (
@@ -21,7 +19,6 @@ const AppLayout = () => {
       <div className="app">
         <Header />
         <Outlet />
-        <Analytics />
       </div>
     </Provider>
   );
