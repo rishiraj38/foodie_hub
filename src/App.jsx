@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { Provider } from "react-redux";
 import appStore from "./utlis/appStore";
+import { Analytics } from "@vercel/analytics/next";
 
 // import Grocery from "./components/Grocery";
 
@@ -20,6 +21,7 @@ const AppLayout = () => {
       <div className="app">
         <Header />
         <Outlet />
+        <Analytics />
       </div>
     </Provider>
   );
