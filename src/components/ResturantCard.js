@@ -8,7 +8,6 @@ const ResturantCard = ({ resData }) => {
     <div className="m-4 p-4 w-[250px] bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer border border-gray-100">
       <img
         className="w-full h-40 object-cover rounded-xl mb-3"
-        alt={`${name} logo`}
         src={`${CDN_URL}${cloudinaryImageId}`}
       />
       <h3 className="font-semibold text-lg text-gray-800 truncate">{name}</h3>

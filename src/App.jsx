@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { Provider } from "react-redux";
 import appStore from "./utlis/appStore";
+import HeroAndCategories from "./components/HeroAndCategories";
 import { inject } from "@vercel/analytics";
 inject();
 const Grocery = lazy(() => import("./components/Grocery"));

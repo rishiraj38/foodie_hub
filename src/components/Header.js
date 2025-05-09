@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../utlis/useOnlineStatus";
 import { FaCartShopping } from "react-icons/fa6";
 import { useSelector } from "react-redux";
-
 const Header = () => {
   const [btnName, setbtnName] = useState("Login");
   const [isMenuOpen, setIsMenuOpen] = useState(false); 
@@ -29,7 +28,6 @@ const Header = () => {
         >
           {isMenuOpen ? "✖" : "☰"}
         </button>
-
         <nav className="hidden sm:flex items-center space-x-6 text-gray-800 font-medium">
           <span>Online Status: {onlineStatus ? "✅" : "❌"}</span>
           <Link to="/" className="hover:text-blue-700">
@@ -56,6 +54,7 @@ const Header = () => {
         </nav>
       </div>
 
+      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="sm:hidden flex flex-col items-start mt-4 space-y-3 text-gray-700 font-medium">
           <span>Online Status: {onlineStatus ? "✅" : "❌"}</span>

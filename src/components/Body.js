@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import mockResListData from "./mocks/mockResListData.json";
 import useOnlineStatus from "../utlis/useOnlineStatus";
 import Footer from "./Footer";
+import HeroAndCategories from "./HeroAndCategories";
 
 const Body = () => {
   const [listOfresturant, setListOfresturant] = useState([]);
@@ -81,9 +82,10 @@ const Body = () => {
   }
 
   return (
-    <div className="body px-4 py-6 bg-gradient-to-br from-blue-50 to-purple-100 p-6 min-h-screen">
-      <div className="filter flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-        <div className="search flex gap-2 w-full md:w-auto">
+    <div className="body bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen">
+      <HeroAndCategories />
+      <div className="filter flex flex-col md:flex-row justify-between items-center mb-6 gap-4 px-4">
+        <div className="search flex gap-2 w-full md:w-auto mt-4">
           <input
             type="text"
             className="border border-gray-400 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring focus:border-blue-300 w-full md:w-64"
@@ -100,7 +102,7 @@ const Body = () => {
         </div>
 
         <button
-          className="bg-blue-100 text-blue-800 px-6 py-2 rounded-lg font-medium hover:bg-blue-200 transition-all"
+          className="bg-blue-100 text-blue-800 px-6 py-2 rounded-lg font-medium hover:bg-blue-200 transition-all mt-4"
           onClick={handleFilter}
         >
           ⭐ Top Rated Restaurants
@@ -108,7 +110,7 @@ const Body = () => {
       </div>
 
       {/* Restaurant Cards */}
-      <div className="res-container flex flex-wrap justify-center ">
+      <div className="res-container flex flex-wrap justify-center px-4">
         {listOfresturant.length === 0 ? (
           <Shimmer />
         ) : (
