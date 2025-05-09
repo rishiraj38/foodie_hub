@@ -1,20 +1,37 @@
 import { LOGO_URL } from "../utlis/constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utlis/useOnlineStatus";
 import { FaCartShopping } from "react-icons/fa6";
 import { useSelector } from "react-redux";
+
 const Header = () => {
   const [btnName, setbtnName] = useState("Login");
-  const [isMenuOpen, setIsMenuOpen] = useState(false); 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(false); // ✅ New state
   const onlineStatus = useOnlineStatus();
 
-  //Subscribing to the store using Seletor
-  const cartItems = useSelector((store)=>store.cart.items);
-  // console.log(cartItems)
+  const cartItems = useSelector((store) => store.cart.items);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowHeader(true);
+      } else {
+        setShowHeader(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg px-4 py-3">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        showHeader ? "opacity-100" : "opacity-0"
+      } bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg px-4 py-3`}
+    >
       <div className="flex justify-between items-center">
         {/* Logo and Brand Name */}
         <div className="flex items-center space-x-3">
@@ -28,6 +45,8 @@ const Header = () => {
         >
           {isMenuOpen ? "✖" : "☰"}
         </button>
+
+        {/* Desktop Nav */}
         <nav className="hidden sm:flex items-center space-x-6 text-gray-800 font-medium">
           <span>Online Status: {onlineStatus ? "✅" : "❌"}</span>
           <Link to="/" className="hover:text-blue-700">
@@ -43,7 +62,8 @@ const Header = () => {
             Grocery
           </Link>
           <Link to="/cart" className="hover:text-blue-700 font-bold flex">
-            <FaCartShopping className="content-center size-7"/>({cartItems.length})
+            <FaCartShopping className="content-center size-7" /> (
+            {cartItems.length})
           </Link>
           <button
             className="ml-4 bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition"
@@ -70,7 +90,9 @@ const Header = () => {
           <Link to="/grocery" className="hover:text-blue-700">
             Grocery
           </Link>
-          <Link to="/cart"className="hover:text-blue-700">Cart</Link>
+          <Link to="/cart" className="hover:text-blue-700">
+            Cart
+          </Link>
           <button
             className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
             onClick={() => setbtnName(btnName === "Login" ? "Logout" : "Login")}
