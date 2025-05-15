@@ -110,7 +110,7 @@ const Body = () => {
       </div>
 
       {/* Restaurant Cards */}
-      <div className="res-container flex flex-wrap justify-center px-4">
+      <div className="res-container flex flex-wrap justify-center px-4 ">
         {listOfresturant.length === 0 ? (
           <Shimmer />
         ) : (

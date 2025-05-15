@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useResturantMenu from "../utlis/useResturantMenu";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utlis/cartSlice";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify";
 
 const RestaurantMenu = () => {
-  
   const { resid } = useParams();
   const resInfo = useResturantMenu(resid);
   const [openIndex, setOpenIndex] = useState(null);
@@ -20,8 +21,6 @@ const RestaurantMenu = () => {
       card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
   );
-  
-  console.log(restaurantInfoCard)
 
   const info =
     restaurantInfoCard?.card?.card?.info ||
@@ -40,10 +39,14 @@ const RestaurantMenu = () => {
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
 
-  const handleAddItem = (item)=>{
-    //dispatch an action
-    dispatch(addItem(item))
-  }
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+    toast.success(`${item.card.info.name} added to cart!`, {
+      position: "top-right",
+      autoClose: 2000,
+      theme: "colored",
+    });
+  };
 
   return (
     <div className="px-4 py-6">
@@ -96,8 +99,8 @@ const RestaurantMenu = () => {
                             ₹{(info.price || info.defaultPrice || 0) / 100}
                           </p>
                           <button
-                            onClick={()=>handleAddItem(item)} 
-                            className="bg-blue-600 text-white px-4 py-1 rounded-full shadow hover:bg-blue-700 transition duration-200"
+                            onClick={() => handleAddItem(item)}
+                            className="bg-blue-600 text-white px-4 py-1 rounded-full shadow hover:bg-blue-700 transition duration-200 cursor-pointer"
                           >
                             Add
                           </button>
@@ -111,6 +114,7 @@ const RestaurantMenu = () => {
           </div>
         );
       })}
+      <ToastContainer />
     </div>
   );
 };

@@ -10,7 +10,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { Provider } from "react-redux";
 import appStore from "./utlis/appStore";
-import HeroAndCategories from "./components/HeroAndCategories";
+import ProccedToPay from "./components/ProceedToPay";
 import { inject } from "@vercel/analytics";
 inject();
 const Grocery = lazy(() => import("./components/Grocery"));
@@ -57,6 +57,10 @@ const appRouter = createBrowserRouter([
         path: "/cart",
         element: <Cart />,
       },
+      {
+        path: "/proceedtopay",
+        element: <ProccedToPay />
+      }
     ],
     errorElement: <Error />,
   },

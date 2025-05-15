@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, removeItem } from "../utlis/cartSlice";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
-  const store = useSelector((store) => store);
   const dispatch = useDispatch();
-  console.log(store);
+  const navigate = useNavigate();
 
   const totalAmount =
     cartItems.reduce(
@@ -14,6 +16,15 @@ const Cart = () => {
         (item?.card?.info?.price || item?.card?.info?.defaultPrice || 0),
       0
     ) / 100;
+
+  const handleRemoveItem = (index, name) => {
+    dispatch(removeItem(index));
+    toast.error(`${name} removed from cart!`, {
+      position: "top-right",
+      autoClose: 2000,
+      theme: "colored",
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 p-6">
@@ -58,7 +69,7 @@ const Cart = () => {
                       </p>
                     </div>
                     <button
-                      onClick={() => dispatch(removeItem(index))}
+                      onClick={() => handleRemoveItem(index, info.name)}
                       className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-600 active:scale-95 transition"
                     >
                       Remove
@@ -81,10 +92,21 @@ const Cart = () => {
               >
                 Clear Cart
               </button>
+              <div>
+                <button
+                  className="bg-gradient-to-r from-red-500 to-red-700 text-white px-6 py-3 rounded-2xl text-lg font-medium hover:from-red-600 hover:to-red-800 active:scale-95 transition"
+                  onClick={() =>
+                    navigate("/proceedtopay", { state: { totalAmount } })
+                  }
+                >
+                  Pay
+                </button>
+              </div>
             </div>
           </>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };
