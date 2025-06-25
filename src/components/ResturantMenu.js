@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../utlis/cartSlice";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify";
-
 const RestaurantMenu = () => {
   const { resid } = useParams();
   const resInfo = useResturantMenu(resid);

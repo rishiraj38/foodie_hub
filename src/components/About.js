@@ -1,53 +1,76 @@
-import { useEffect, useState } from "react";
+import React from "react";
 
-const About = () => {
-  const [resInfo, setResInfo] = useState(null);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch("https://api.github.com/users/rishiraj38");
-      const json = await response.json();
-      setResInfo(json);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  if (!resInfo)
-    return <p className="text-center text-xl text-white">Loading...</p>;
-
-  const { login, avatar_url, name, location, bio, html_url } = resInfo;
-
+const AboutUs = () => {
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-purple-500 min-h-screen text-white py-16 px-6">
-      <div className="max-w-4xl mx-auto text-center">
-        <h1 className="text-4xl font-bold mb-4">About Me</h1>
-        <div className="flex justify-center mb-8">
-          <img
-            src={avatar_url}
-            alt="Profile Picture"
-            className="w-40 h-40 rounded-full shadow-lg border-4 border-white"
-          />
+    <div className="min-h-screen bg-slate-50 text-gray-800">
+      {/* Hero Section */}
+      <div className="bg-[url('https://www.swiggy.com/corporate/wp-content/uploads/2024/10/about-banner-image-scaled.webp')] bg-cover bg-center bg-no-repeat h-[60vh] flex items-center justify-center">
+        <h1 className="text-5xl font-bold text-white drop-shadow-lg">
+          About Us
+        </h1>
+      </div>
+
+      {/* About Text */}
+      <div className="max-w-4xl mx-auto py-12 px-6 text-center">
+        <p className="text-lg text-gray-700">
+          FoodieHub is a new-age consumer-first organization offering an
+          easy-to-use convenience platform, accessible through a unified app. We
+          bring together your favorite services — from food delivery to instant
+          groceries — all under one roof.
+        </p>
+      </div>
+
+      {/* Services Section */}
+      <div className="relative bg-[url('https://www.swiggy.com/corporate/wp-content/uploads/2024/10/map-bg.png')] bg-cover bg-center bg-no-repeat py-20">
+        <div className="flex flex-wrap items-center justify-center gap-16">
+          {/* Food */}
+          <div className="flex flex-col items-center">
+            <img
+              src="https://www.swiggy.com/corporate/wp-content/uploads/2024/10/food.webp"
+              alt="Food"
+              className="w-36 h-36 object-cover shadow-lg"
+            />
+          </div>
+
+          {/* Instamart */}
+          <div className="flex flex-col items-center">
+            <img
+              src="https://www.swiggy.com/corporate/wp-content/uploads/2024/10/instamart.webp"
+              alt="Instamart"
+              className="w-36 h-36 object-cover shadow-lg"
+            />
+          </div>
+
+          {/* Dineout */}
+          <div className="flex flex-col items-center">
+            <img
+              src="https://www.swiggy.com/corporate/wp-content/uploads/2024/10/dineout-282x300.webp"
+              alt="Dineout"
+              className="w-36 h-36 object-cover shadow-lg"
+            />
+          </div>
+
+          {/* Genie */}
+          <div className="flex flex-col items-center">
+            <img
+              src="https://www.swiggy.com/corporate/wp-content/uploads/2024/10/genie.webp"
+              alt="Genie"
+              className="w-36 h-36 object-cover shadow-lg"
+            />
+          </div>
+
+          {/* Minis */}
+          <div className="flex flex-col items-center">
+            <img
+              src="https://www.swiggy.com/corporate/wp-content/uploads/2024/10/minis.webp"
+              alt="Minis"
+              className="w-36 h-36 object-cover shadow-lg"
+            />
+          </div>
         </div>
-        <h2 className="text-2xl font-semibold">{name}</h2>
-        <p className="text-xl mt-2">{login}</p>
-        {location && <p className="mt-2">Location: {location}</p>}
-        {bio && <p className="mt-2 text-lg">{bio}</p>}
-        <a
-          href={html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-4 inline-block px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-lg"
-        >
-          View GitHub Profile
-        </a>
       </div>
     </div>
   );
 };
 
-export default About;
+export default AboutUs;
