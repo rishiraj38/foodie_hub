@@ -1,25 +1,24 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyD9OgUOeuVUbVXsGpVWzGn8b36d0Y9gxOw",
-  authDomain: "foodie-hub-1998d.firebaseapp.com",
-  projectId: "foodie-hub-1998d",
-  storageBucket: "foodie-hub-1998d.firebasestorage.app",
-  messagingSenderId: "597823613590",
-  appId: "1:597823613590:web:fd2e4bab1eeb2f66ce70b7",
-  measurementId: "G-FHQJEE6N7F",
+  apiKey: "AIzaSyC0Ef5eMfwDCOpdptVm313yIZ6q6YnfTAo",
+  authDomain: "foodiehub-e31ba.firebaseapp.com",
+  projectId: "foodiehub-e31ba",
+  storageBucket: "foodiehub-e31ba.firebasestorage.app",
+  messagingSenderId: "375554678397",
+  appId: "1:375554678397:web:3e254bc64aa9ba34229b14",
+  measurementId: "G-CLF52LZSDW",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const auth = getAuth(app);
 
-export { app, auth, analytics };
+export const auth = getAuth()

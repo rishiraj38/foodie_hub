@@ -12,8 +12,8 @@ import { Provider } from "react-redux";
 import appStore from "./utlis/appStore";
 import ProccedToPay from "./components/ProceedToPay";
 import { inject } from "@vercel/analytics";
+import Login from "./components/Login";
 inject();
-const Grocery = lazy(() => import("./components/Grocery"));
 const AppLayout = () => {
   return (
     <Provider store={appStore}>
@@ -38,15 +38,11 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/grocery",
-        element: (
-          <Suspense fallback={<h1>Loading.....</h1>}>
-            <Grocery />
-          </Suspense>
-        ),
+        path: "/",
+        element: <Login />,
       },
       {
-        path: "/",
+        path: "/body",
         element: <Body />,
       },
       {

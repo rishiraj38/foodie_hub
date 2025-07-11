@@ -1,17 +1,47 @@
 import { LOGO_URL } from "../utlis/constants";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useOnlineStatus from "../utlis/useOnlineStatus";
 import { FaCartShopping } from "react-icons/fa6";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { auth } from "../utlis/firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { addUser, removeUser } from "../utlis/userSlice";
 
 const Header = () => {
-  const [btnName, setbtnName] = useState("Login");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showHeader, setShowHeader] = useState(false); // ✅ New state
+  const [showHeader, setShowHeader] = useState(false);
   const onlineStatus = useOnlineStatus();
-
   const cartItems = useSelector((store) => store.cart.items);
+  const user = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        // handled by onAuthStateChanged
+      })
+      .catch((error) => {
+        navigate("/error" + error);
+      });
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid, email, displayName }));
+        navigate("/body");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+
+    return () => unsubscribe();
+  }, [dispatch, navigate]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +78,7 @@ const Header = () => {
         {/* Desktop Nav */}
         <nav className="hidden sm:flex items-center space-x-6 text-gray-800 font-medium">
           <span>Online Status: {onlineStatus ? "✅" : "❌"}</span>
-          <Link to="/" className="hover:text-blue-700">
+          <Link to="/body" className="hover:text-blue-700">
             Home
           </Link>
           <Link to="/about" className="hover:text-blue-700">
@@ -57,19 +87,28 @@ const Header = () => {
           <Link to="/contact" className="hover:text-blue-700">
             Contact
           </Link>
-          <Link to="/grocery" className="hover:text-blue-700">
-            Grocery
-          </Link>
-          <Link to="/cart" className="hover:text-blue-700 font-bold flex">
-            <FaCartShopping className="content-center size-7" /> (
-            {cartItems.length})
-          </Link>
-          <button
-            className="ml-4 bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition"
-            onClick={() => setbtnName(btnName === "Login" ? "Logout" : "Login")}
+          <Link
+            to="/cart"
+            className="hover:text-blue-700 font-bold flex items-center"
           >
-            {btnName}
-          </button>
+            <FaCartShopping className="size-6 mr-1" /> ({cartItems.length})
+          </Link>
+
+          {user ? (
+            <button
+              className="ml-4 bg-black text-white px-4 py-1 rounded hover:bg-gray-900 transition"
+              onClick={handleSignOut}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="ml-4 bg-black text-white px-4 py-1 rounded hover:bg-gray-900 transition"
+            >
+              Login
+            </Link>
+          )}
         </nav>
       </div>
 
@@ -77,7 +116,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className="sm:hidden flex flex-col items-start mt-4 space-y-3 text-gray-700 font-medium">
           <span>Online Status: {onlineStatus ? "✅" : "❌"}</span>
-          <Link to="/" className="hover:text-blue-700">
+          <Link to="/body" className="hover:text-blue-700">
             Home
           </Link>
           <Link to="/about" className="hover:text-blue-700">
@@ -90,14 +129,24 @@ const Header = () => {
             Grocery
           </Link>
           <Link to="/cart" className="hover:text-blue-700">
-            Cart
+            Cart ({cartItems.length})
           </Link>
-          <button
-            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
-            onClick={() => setbtnName(btnName === "Login" ? "Logout" : "Login")}
-          >
-            {btnName}
-          </button>
+
+          {user ? (
+            <button
+              className="bg-black text-white px-4 py-2 rounded hover:bg-gray-900 transition"
+              onClick={handleSignOut}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="bg-black text-white px-4 py-2 rounded hover:bg-gray-900 transition"
+            >
+              Login
+            </Link>
+          )}
         </div>
       )}
     </header>

@@ -135,7 +135,7 @@ const ProceedToPay = () => {
               Thanks for shopping!
             </h3>
             <p className="text-lg text-gray-600">Your order is on the way 🚚</p>
-            <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl transition transform hover:scale-105 active:scale-95 mt-4" onClick={() => navigate("/")}>Go to Home</button>
+            <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-xl transition transform hover:scale-105 active:scale-95 mt-4" onClick={() => navigate("/body")}>Go to Home</button>
           </div>
         )}
       </div>
