@@ -31,6 +31,7 @@ const Login = () => {
     if (message) return;
 
     if (!isSignInForm) {
+      { /* Sign Up Logic */ }
       createUserWithEmailAndPassword(
         auth,
         email.current.value,
@@ -60,6 +61,7 @@ const Login = () => {
           setErrorMessage(error.code + " - " + error.message);
         });
     } else {
+      { /* Sign In Logic */ }
       signInWithEmailAndPassword(
         auth,
         email.current.value,
