@@ -66,7 +66,7 @@ const AboutUs = () => {
               alt="Minis"
               className="w-36 h-36 object-cover shadow-lg"
             />
-          </div>
+          </div>         
         </div>
       </div>
     </div>
