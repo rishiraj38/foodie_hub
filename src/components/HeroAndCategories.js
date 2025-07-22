@@ -51,10 +51,10 @@ const HeroAndCategories = () => {
           loop
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="bg-black/50 p-6 rounded-xl text-center relative z-10">
+        <div className="bg-black/50 p-4 md:p-6 rounded-xl text-center relative z-10 max-w-[80%] mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Delicious Meals Delivered Fast
-          </h1>
+          </h1> 
           <p className="mb-4 text-lg">Your favorite dishes at your doorstep.</p>
           <button
             className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-2 rounded-full"

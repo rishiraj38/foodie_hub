@@ -17,11 +17,11 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Thank you for contacting us! We'll get back to you soon.");
+    alert("Thank you for contacting us! We'll get back to you soon."); 
   };
 
   return (
-    <div className="container mx-auto py-12 px-6 bg-gradient-to-r from-blue-500 to-purple-500">
+    <div className=" mx-auto py-12 px-6 bg-gradient-to-r from-blue-500 to-purple-500">
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-white">Contact Us</h1>
@@ -37,7 +37,6 @@ const Contact = () => {
       >
         <div className="mb-4">
           <label
-            htmlFor="name"
             className="block text-sm font-semibold text-gray-700"
           >
             Name
@@ -55,7 +54,6 @@ const Contact = () => {
 
         <div className="mb-4">
           <label
-            htmlFor="email"
             className="block text-sm font-semibold text-gray-700"
           >
             Email
@@ -73,7 +71,6 @@ const Contact = () => {
 
         <div className="mb-6">
           <label
-            htmlFor="message"
             className="block text-sm font-semibold text-gray-700"
           >
             Message

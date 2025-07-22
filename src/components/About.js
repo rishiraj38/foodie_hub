@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
@@ -68,6 +69,14 @@ const AboutUs = () => {
             />
           </div>
         </div>
+      </div>
+      <div className="flex justify-center pb-5">
+        <Link
+          to="/body"
+          className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+        >
+          Go to Home
+        </Link>
       </div>
     </div>
   );

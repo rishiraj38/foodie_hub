@@ -11,6 +11,9 @@ const Body = () => {
   const [listOfresturant, setListOfresturant] = useState([]);
   const [filteredListOfresturant, setFilteredListOfresturant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const restaurantsPerPage = 12;
+
   const RestaurantCardPromoted = withPromotedLabel(ResturantCard);
 
   useEffect(() => {
@@ -81,6 +84,34 @@ const Body = () => {
     );
   }
 
+  const startIndex = (currentPage - 1) * restaurantsPerPage;
+  const endIndex = startIndex + restaurantsPerPage;
+  const currentRestaurants = filteredListOfresturant.slice(
+    startIndex,
+    endIndex
+  );
+  const totalPages = Math.ceil(
+    filteredListOfresturant.length / restaurantsPerPage
+  );
+  // console.log(currentRestaurants);
+  const pageButtons = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageButtons.push(
+      <button
+        key={i}
+        className={`px-4 py-2 rounded-lg ${
+          currentPage === i
+            ? "bg-blue-500 text-white"
+            : "bg-gray-200 text-gray-800 hover:bg-blue-100"
+        }`}
+        onClick={() => setCurrentPage(i)}
+      >
+        {i}
+      </button>
+    );
+  }
+
+
   return (
     <div className="body bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen">
       <HeroAndCategories />
@@ -110,11 +141,11 @@ const Body = () => {
       </div>
 
       {/* Restaurant Cards */}
-      <div className="res-container flex flex-wrap justify-center px-4 ">
+      <div className="flex flex-wrap justify-center px-4">
         {listOfresturant.length === 0 ? (
           <Shimmer />
         ) : (
-          filteredListOfresturant.map((restaurant) =>
+          currentRestaurants.map((restaurant) =>
             restaurant?.info?.id ? (
               <Link
                 to={`/resturant/${restaurant.info.id}`}
@@ -131,6 +162,10 @@ const Body = () => {
         )}
       </div>
 
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-8 space-x-2">{pageButtons}</div>
+      )}
       {/* Footer */}
       <div className="mt-10">{listOfresturant.length > 0 && <Footer />}</div>
     </div>

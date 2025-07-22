@@ -31,8 +31,8 @@ const Header = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const { uid, email, displayName } = user;
-        dispatch(addUser({ uid, email, displayName }));
+        const { uid, email } = user;
+        dispatch(addUser({ uid, email }));
         navigate("/body");
       } else {
         dispatch(removeUser());
@@ -45,7 +45,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 100) {
         setShowHeader(true);
       } else {
         setShowHeader(false);
