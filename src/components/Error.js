@@ -25,7 +25,7 @@ const Error = () => {
               "Page not found or an unexpected error occurred."}
           </p>
           <a
-            href="/"
+            href="/body"
             className="inline-block px-6 py-3 bg-green-600 text-white rounded-full hover:bg-green-700 transition"
           >
             Go to Home

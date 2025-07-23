@@ -125,9 +125,6 @@ const Header = () => {
           <Link to="/contact" className="hover:text-blue-700">
             Contact
           </Link>
-          <Link to="/grocery" className="hover:text-blue-700">
-            Grocery
-          </Link>
           <Link to="/cart" className="hover:text-blue-700">
             Cart ({cartItems.length})
           </Link>
