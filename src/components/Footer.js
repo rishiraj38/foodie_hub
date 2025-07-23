@@ -1,3 +1,6 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <footer className=" bg-black text-white py-12">
@@ -6,7 +9,7 @@ const Footer = () => {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-orange-500">FoodieHub</h1>
           <p className="text-sm text-gray-400 mt-2">
-            Delivering happiness, one meal at a time.
+            Delivering happiness, one meal at Link time.
           </p>
         </div>
 
@@ -16,36 +19,36 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-2">Company</h3>
             <ul>
               <li>
-                <a
-                  href="/about"
+                <Link
+                  to="/about"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/careers"
+                <Link
+                  to="/careers"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   Careers
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/privacy"
+                <Link
+                  to="/privacy"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -54,28 +57,28 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-2">Support</h3>
             <ul>
               <li>
-                <a
-                  href="/faq"
+                <Link
+                  to="/faq"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   FAQ
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/help"
+                <Link
+                  to="/help"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   Help Center
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/track-order"
+                <Link
+                  to="/track-order"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   Track Order
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -84,36 +87,36 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-2">Connect</h3>
             <ul>
               <li>
-                <a
-                  href="/facebook"
+                <Link
+                  to="/facebook"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   Facebook
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/instagram"
+                <Link
+                  to="/instagram"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   Instagram
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/twitter"
+                <Link
+                  to="/twitter"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   Twitter
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/linkedin"
+                <Link
+                  to="/linkedin"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   LinkedIn
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -122,20 +125,20 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-2">Download App</h3>
             <ul>
               <li>
-                <a
-                  href="/download/android"
+                <Link
+                  to="/download/android"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   Android
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="/download/ios"
+                <Link
+                  to="/download/ios"
                   className="text-sm text-gray-400 hover:text-orange-500"
                 >
                   iOS
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
